@@ -7,8 +7,11 @@
 </head>
 <body>
     <script>
+        let humanScore = 0;
+        let computerScore = 0;
 
-        function g() {
+
+        function getComputerChoice() {
             let randomNumber = Math.floor(Math.random() * 3);
             if (randomNumber === 0) {
                 return "rock";
@@ -23,7 +26,52 @@
 
         function getHumanChoice() {
             let humanChoice = prompt("Rock, Paper, or Scissors?");
+            return humanChoice;
         }
+
+        function playRound(humanChoice, computerChoice) {
+        // rock Outcomes
+            if (humanChoice.toLowerCase() === "rock" && computerChoice === "paper") {
+                computerScore++;
+                console.log("You Lose!");
+            }
+            else if (humanChoice.toLowerCase() === "rock" && computerChoice === "scissors"){
+                console.log("You Win!");
+                humanScore++;
+            }
+            if (humanChoice.toLowerCase() === "rock" && computerChoice === "rock") {
+                console.log("Its a tie.");
+            }
+        // Paper Outcomes
+            if (humanChoice.toLowerCase() === "paper" && computerChoice === "rock") {
+                console.log("You Win!");
+                humanScore++;
+            }
+            else if (humanChoice.toLowerCase() === "paper" && computerChoice === "scissors"){
+                console.log("You Lose!");
+                computerScore++;
+            }
+            if (humanChoice.toLowerCase() === "paper" && computerChoice === "paper") {
+                console.log("Its a tie.");
+            }
+        // scissors outcomes
+            if (humanChoice.toLowerCase() === "scissors" && computerChoice === "paper") {
+                console.log("You Win!");
+                humanScore++;
+            }
+            else if (humanChoice.toLowerCase() === "scissors" && computerChoice === "rock"){
+                console.log("You Lose!");
+                computerScore++;
+            }
+            if (humanChoice.toLowerCase() === "scissors" && computerChoice === "scissors") {
+                console.log("Its a tie.");
+            } 
+        }
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        console.log(computerSelection);
+        
+        playRound(humanSelection, computerSelection);
     </script>
 </body>
 </html>
